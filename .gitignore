@@ -1,0 +1,8 @@
+# ignore IDE (IntelliJ) related files
+.classpath
+.project
+.settings
+.idea
+.metadata
+*.ipr
+*.iml

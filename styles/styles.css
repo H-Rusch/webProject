@@ -1,0 +1,831 @@
+/*Define variables for colors */
+:root {
+    --light--green: #006600;
+    --dark--green: #004400;
+    --dark--grey: rgba(0, 0, 0, 0.9);
+    --desktop-font-size: 16px;
+    --mobile-font-size: 22px;
+    --selected-color: green;
+    --unselected-color: gray;
+}
+
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+main {
+    margin-top: 2%;
+    min-height: 95vh;
+}
+
+.text-content {
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 120%;
+}
+
+.text-content > p {
+    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+.text-content > blockquote {
+    margin-left: 6%;
+}
+
+.text-content > h1 {
+    font-size: 2em;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.text-content > h2, .text-content > h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Formating used in privacy-policy and impressum */
+.standard-text {
+    margin-left: 10%;
+    margin-right: 15%;
+}
+
+.standard-text p, .standard-text ul {
+    margin-left: 15px;
+    font-size: 1.2em;
+}
+
+.standard-text * {
+    margin-bottom: 5px;
+}
+
+.standard-text h1, .standard-text h2, .standard-text h3, .standard-text h4 {
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+/*
+ * Navigation bar at the top
+ */
+
+.topnav {
+    display: flex;
+    justify-content: flex-end;
+    background: var(--dark--grey);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: var(--dark--grey);
+}
+
+nav a {
+    flex-basis: 200px;
+    text-align: center;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: white;
+    transition: 0.2s background-color;
+}
+
+nav a:hover {
+    background-color: rgb(0, 100, 0); /* light green */
+}
+
+/*
+ * hamburg button at top right
+ */
+label.hamburg {
+    background: var(--dark--grey);
+    width: 75px;
+    height: 50px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    order: 2;
+    display: none;
+}
+
+input#hamburg {
+    display: none
+}
+
+.line {
+    position: absolute;
+    left: 10px;
+    height: 4px;
+    width: 55px;
+    background: #fff;
+    border-radius: 2px;
+    display: block;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.line:nth-child(1) {
+    top: 12px;
+}
+
+.line:nth-child(2) {
+    top: 24px;
+}
+
+.line:nth-child(3) {
+    top: 36px;
+}
+
+#hamburg:checked + .hamburg .line:nth-child(1) {
+    transform: translateY(12px) rotate(-45deg);
+}
+
+#hamburg:checked + .hamburg .line:nth-child(2) {
+    opacity: 0;
+}
+
+#hamburg:checked + .hamburg .line:nth-child(3) {
+    transform: translateY(-12px) rotate(45deg);
+}
+
+nav.menu {
+    height: auto;
+    max-height: 600px;
+    overflow: hidden;
+    transition: all 0.5s;
+    order: 1;
+    align-self: flex-start;
+    flex-basis: 100%;
+}
+
+#hamburg:checked + .hamburg + nav.menu {
+    max-height: 600px;
+}
+
+/*
+ * Footer and elements in the footer.
+ */
+footer {
+    display: flex;
+    height: 2.5em;
+    width: 100%; /* Fill whole width of page */
+    background-color: var(--dark--grey);
+}
+
+.footer-element {
+    flex-basis: 10%;
+    align-self: center;
+    margin-left: 1%;
+    text-decoration: none;
+    color: white;
+}
+
+.footer-element:hover {
+    text-decoration: underline;
+}
+
+/*
+ * Dialogue used for login and register
+ */
+.login-register-dialog {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 100px;
+    width: 300px;
+    padding: 10px 10px 20px 10px;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.login-register-dialog h1 {
+    font-size: 1.5em;
+    align-self: center;
+    margin-bottom: 5%;
+}
+
+.login-register-dialog input {
+    line-height: 1.5em;
+    font-size: 0.8em;
+}
+
+.login-register-dialog label,
+.login-register-dialog input {
+    margin: 0 5%;
+}
+
+.login-register-dialog label + input {
+    margin-bottom: 5%;
+}
+
+.login-register-dialog p {
+    padding: 1% 5%;
+}
+
+.register-text-hint {
+    align-self: center;
+}
+
+.register-text-hint p {
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.input-field {
+    padding: 0 10px 10px 10px;
+    line-height: 200%;
+    display: flex;
+    flex-direction: column;
+}
+
+.error-field {
+    border: 1px solid red;
+    background-color:lavenderblush;
+}
+
+.correct-field {
+    border: 1px solid green;
+    background-color: honeydew;
+}
+
+.button-basic {
+    width: 100%;
+    padding: 3px;
+    align-self: center;
+    font-size: 0.75em;
+    color: white;
+    background-color: var(--light--green);
+    border-radius: 8px;
+    border: none;
+    transition-duration: 0.2s;
+}
+
+.button-basic:hover {
+    background-color: var(--dark--green);
+}
+
+.link-button {
+    font-size: 1.3em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.category-button {
+    font-size: 1.3em;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* hint text which doesn't take too much of the user's focus */
+.text-hint {
+    padding-top: 5px;
+    font-size: 14px;
+    color: dimgrey;
+    line-height: normal;
+    text-align: center;
+}
+
+.error-text {
+    color: red;
+    align-self: center;
+    font-size: 14px;
+}
+
+.guide-created-text {
+    padding-top: 5px;
+    color:green;
+    align-self: center;
+    font-size: 25px;
+}
+
+/*
+ * Create Guide
+ */
+.create-guide {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Create guide main content */
+.create-guide-metadata {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-guide-data > * {
+    margin-top: 5px;
+    margin-left: 10%;
+    font-size: 1.2em;
+}
+
+.create-guide-metadata-element {
+    width: 80%;
+    margin-top: 2%;
+    padding: 0 1% 1% 3em;
+}
+
+.create-guide-data-element {
+    width: 150%;
+    margin-top: 2%;
+}
+
+.create-guide-data-element input[type=text],
+.create-guide-data-element textarea,
+.create-guide-metadata-element select {
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.create-guide-data-element textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+button {
+    background-color: var(--light--green);
+    border: 1px solid black;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: var(--mobile-font-size);
+    margin: 5px 0 0 0;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: var(--dark--green);
+}
+
+/*
+ * Guide info and structure
+ */
+.guide-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.guide-sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.guide-like-dislike {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.star-rating-container {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: flex-start;
+}
+
+.guide-rating-user p {
+    text-align: center;
+}
+
+.guide-text {
+    max-width: 75%;
+}
+
+.shariff {
+    margin-left: 8%;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+ * User Guides Overview
+ */
+
+.user-page-entry input {
+    opacity: 0;
+    position: absolute;
+}
+
+.user-page-entry input:checked + Label{
+    background-color: var(--light--green);
+}
+.user-page-entry  .button-basic {
+    display: inline;
+    width: auto;
+}
+
+.user-page-button {
+    margin-right: 5px;
+}
+
+/*
+ * Like and Dislike Button
+ */
+.like-dislike-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#like-dislike-container {
+    font-size: 1.5em;
+}
+
+.like-dislike-element input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.like-dislike-element input[type="checkbox"]:checked + label#like-button {
+    box-shadow: 0 0 6pt 2pt var(--light--green);
+}
+.like-dislike-element input[type="checkbox"]:checked + label#dislike-button {
+    box-shadow: 0 0 6pt 2pt red;
+}
+
+.like-dislike-element label {
+    width: 5em;
+    padding-left: 2.8em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    border-radius: 4px;
+}
+
+.rating-button {
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 1.7em;
+    font-size: inherit;
+    width: 6.5em;
+    height: 3em;
+    padding-left: 2em;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: inherit;
+}
+
+#like-button:hover, #like-button:focus {
+    background-color: inherit;
+    box-shadow: 0 0 6pt 2pt var(--light--green);;
+}
+
+.active-button {
+    color: #ccac00;
+}
+
+#like-button, #like-button {
+    background-image: url("../img/like.svg");
+    color: var(--light--green);
+}
+
+#dislike-button:hover, #dislike-button:focus {
+    background-color: inherit;
+    box-shadow: 0 0 6pt 2pt red;
+}
+
+#dislike-button {
+    background-image: url("../img/dislike.svg");
+    color: red;
+}
+
+#like-count {
+    color: var(--light--green);
+    font-size: 0.75em;
+}
+
+#dislike-count {
+    color: red;
+    font-size: 0.75em;
+}
+
+.unfolding {
+    display: none;
+}
+
+/*
+ * Guide overview
+ */
+.guide-overview {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 5%;
+}
+
+.guide-overview-entry {
+    background-repeat: no-repeat;
+    background-position: 1% center;
+    background-size: 1.7em;
+    padding: 1% 1% 1% 3em;
+    margin-top: 1%;
+    font-size: 1.25em;
+    text-align: start;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    border: 2px solid black;
+    outline: none;
+    transition: 0.2s background-color;
+    background-color: white;
+    display: block;
+}
+
+.guide-overview-entry[type="search"] {
+    width: 100%;
+}
+
+/* Entries in user-overview */
+.user-page-entry .guide-overview-entry {
+    margin-bottom: 0.5em;
+}
+
+.user-page-entry .button-basic {
+    background-color: darkgray;
+    color: black;
+}
+
+.profile-buttons {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+#logout-button {
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 5px;
+}
+
+#game-finder-button {
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 5px;
+}
+
+.guide-overview-entry:not([type="search"]):hover,
+.guide-overview-entry:not([type="search"]):focus {
+    background-color: var(--light--green);
+    color: white;
+}
+
+.search-bar {
+    background-image: url("../img/lense.svg");
+    margin-bottom: 2%;
+}
+
+.new-guide-button {
+    background-image: url("../img/plus.svg");
+}
+
+.time-trial-icon {
+    background-image: url("../img/Stopwatch.svg");
+}
+
+.online-icon {
+    background-image: url("../img/Globe.svg");
+}
+
+.guide-overview-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+
+
+.guide-filters {
+    display: flex;
+    flex-direction: column;
+}
+
+.guide-filter-option {
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.guide-filter-option label {
+    display: inline-block;
+    width: 6em;
+    font-size: 100%;
+    padding-left: 1.8em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    border-radius: 4px;
+    background-color: white;
+    border: solid 2px black;
+}
+
+.guide-filter-option input[type="checkbox"] {
+    position: absolute;
+    height: 1.5em;
+    width: 1.5em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+
+.guide-filter-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.guide-filter-option label:hover,
+.guide-filter-option input[type="checkbox"]:focus + label,
+.guide-filter-option input[type="checkbox"]:hover + label,
+.guide-filter-option input[type="checkbox"]:checked + label,
+.guide-filter-option input[type="radio"]:focus + label,
+.guide-filter-option input[type="radio"]:hover + label,
+.guide-filter-option input[type="radio"]:checked + label {
+    background-color: var(--light--green);
+    color: white;
+}
+
+.hidden-label {
+    display: none;
+}
+
+/*
+ * Equipment selection
+*/
+.equipment-input {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.equipment-input label {
+    width: 300px;
+}
+
+.equipment-input input[type="number"] {
+    width: 3em;
+    padding: 4px;
+}
+
+.game-list {
+    list-style-position: inside;
+}
+
+/*
+ * Responsiveness
+*/
+
+@media (max-width: 1300px) {
+    .guide-overview-entry {
+        background-size: 1.2em;
+        padding: 1% 1% 1% 2em;
+    }
+}
+
+@media (max-width: 980px) {
+    /* Layout change for guides */
+    .guide-main {
+        flex-direction: column;
+    }
+
+    .guide-main .button-basic {
+        min-width: fit-content;
+        width: 40%;
+    }
+
+    .guide-like-dislike {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Layout change for guide-overview */
+    .guide-overview-container {
+        flex-direction: column;
+    }
+
+    .guide-filters {
+        flex-direction: row;
+        padding-right: 5%;
+    }
+
+    .guide-filter-option {
+        margin-top: 0;
+    }
+
+    .guide-filter-option label {
+        width: 8em;
+    }
+
+    /* Guide-Create-Overview changes to flexbox */
+    .create-guide {
+        display: flex;
+        flex-direction: column;
+        align-content: space-evenly;
+    }
+
+    .create-guide-metadata {
+        flex-direction: row;
+    }
+
+    .create-guide-data-element {
+        width: 80%;
+    }
+
+    #lastEdit {
+        width: 50%;
+        align-self: auto;
+    }
+
+    #category {
+        width: 50%;
+        align-self: auto;
+    }
+
+    .guide-metadata-selection {
+        display: flex; 
+        flex-direction: column;
+        margin-left: 5em;
+    }
+
+    .create-guide-category {
+        display: flex;
+        flex-direction: column;
+        margin: 0 5%;
+        padding-left: 5%;
+    }
+
+    .create-guide-category-option {
+        margin-left: 1%;
+        margin-top: 3%;
+    }
+
+    .create-guide-category-overview {
+        font-size: 0.7em;
+    }
+
+    .create-guide-sidebar-left {
+        display: flex;
+        flex-direction: column;
+        margin: 0 2em;
+        padding-left: 7%;
+    }
+
+    .like-dislike-element-internal {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+}
+
+@media (max-width: 700px) {
+    /* Navigation Bar switches from a horizontal to a vertical layout with hamburger button */
+    nav a {
+        padding: 10px 0;
+        flex-basis: 0;
+    }
+
+    nav.menu {
+        flex-direction: column;
+        width: 80%;
+        max-height: 0;
+    }
+
+    label.hamburg {
+        display: block;
+        margin-right: 5px;
+    }
+
+    .create-guide-category-overview {
+        flex-basis: auto;
+    }
+
+    .create-guide-category-option label {
+        width: 5em;
+    }
+
+
+}
+
+@media (max-width: 550px) {
+    .guide-filters {
+        flex-direction: column;
+    }
+
+    .guide-filter-option {
+        margin-bottom: 3px;
+    }
+}
